@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Brand Select shop Lily. | Experience, Not Consumption.</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=Noto+Sans+JP:wght@200;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f8f6f3;           /* 柔らかなグレージュ */
+      --text: #4a4541;         /* 温かみチャコール */
+      --muted: #9e968f;
+      --border: rgba(158, 150, 143, 0.22);
+      --accent: #6b635d;
+      --white: #ffffff;
+      --transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0;
+      font-family: "Noto Sans JP", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.9;
+      letter-spacing: 0.06em;
+    }
+
+    .en { font-family: 'Cormorant Garamond', serif; font-style: italic; }
+    a { color: inherit; text-decoration: none; transition: var(--transition); }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* --- Header --- */
+    .header {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(248, 246, 243, 0.86);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-in { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .brand-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      letter-spacing: 0.1em;
+      font-weight: 300;
+    }
+    .nav-d {
+      display: flex; gap: 30px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-weight: 400;
+      opacity: .9;
+    }
+    .nav-d a:hover { opacity: .7; }
+
+    .mini-link{
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      opacity: .85;
+      border-bottom: 1px solid rgba(107,99,93,.35);
+      padding-bottom: 3px;
+    }
+    .mini-link:hover{ opacity:.6; }
+
+    /* --- Hero (Light & Blur) --- */
+    .hero {
+      height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      background: #e2deda;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1516062423079-7ca13cdc7f5a?auto=format&fit=crop&q=80&w=2000');
+      background-size: cover; background-position: center;
+      filter: blur(4px) brightness(1.08);
+      opacity: 0.62;
+      transform: scale(1.03);
+    }
+    .hero-overlay{
+      position:absolute; inset:0;
+      background: radial-gradient(800px 400px at 50% 40%, rgba(248,246,243,.55), rgba(248,246,243,.15) 55%, rgba(248,246,243,.35));
+      z-index:1;
+    }
+    .hero-content {
+      position: relative; z-index: 2; text-align: center;
+      padding: 0 18px;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(38px, 7.6vw, 72px);
+      font-weight: 300; line-height: 1.05; margin: 0 0 16px;
+      letter-spacing:.06em;
+    }
+    .hero-sub {
+      font-size: 13px;
+      letter-spacing: 0.32em;
+      color: var(--accent);
+      margin: 0 auto 34px;
+      font-weight: 200;
+      max-width: 720px;
+    }
+
+    /* --- Buttons --- */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 16px 42px;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      transition: var(--transition);
+      cursor: pointer;
+      border: 1px solid var(--accent);
+      background: transparent;
+      color: var(--accent);
+    }
+    .btn:hover {
+      background: var(--accent);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+    .btn-solid{
+      background: var(--accent);
+      color: var(--white);
+    }
+    .btn-solid:hover{
+      filter: brightness(.95);
+      transform: translateY(-2px);
+    }
+
+    /* --- Sections --- */
+    .sec { padding: 120px 0; }
+    .sec-head { text-align: center; margin-bottom: 70px; }
+    .sec-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 34px;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      margin: 0 0 10px;
+    }
+    .sec-sub {
+      font-size: 10px;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin:0;
+    }
+
+    /* --- Feature Cards --- */
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .card {
+      padding: 52px 32px;
+      border: 1px solid var(--border);
+      text-align: center;
+      background: rgba(255,255,255,0.35);
+    }
+    .card h3 { font-size: 15px; margin: 0 0 18px; font-weight: 500; letter-spacing:.08em; }
+    .card p { font-size: 13px; color: var(--muted); line-height: 2; margin:0; }
+
+    /* --- Products --- */
+    .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .p-card { background: var(--white); border: 1px solid var(--border); transition: var(--transition); }
+    .p-img {
+      aspect-ratio: 1; background: #eee; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .p-img img { width: 100%; height: 100%; object-fit: cover; filter: sepia(0.08) contrast(0.92); transition: var(--transition); }
+    .p-card:hover .p-img img { transform: scale(1.05); }
+    .p-info { padding: 22px 18px; text-align: center; }
+    .p-brand { font-family: 'Cormorant Garamond', serif; font-size: 18px; margin-bottom: 6px; letter-spacing:.08em; }
+    .p-name { font-size: 11px; color: var(--muted); margin: 0 0 10px; letter-spacing:.12em; }
+    .p-price { font-size: 14px; letter-spacing: 0.12em; font-weight: 400; }
+
+    /* --- Philosophy with images --- */
+    .philo-grid { display:grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
+    .philo-item { background: transparent; }
+    .philo-img{
+      aspect-ratio: 4/5;
+      background:#ddd;
+      margin-bottom: 18px;
+      overflow:hidden;
+      border: 1px solid var(--border);
+    }
+    .philo-img img{ width:100%; height:100%; object-fit:cover; opacity:.82; filter: sepia(.08) contrast(.95); }
+    .philo-item h3{ margin:0 0 12px; font-size: 15px; font-weight: 500; letter-spacing:.08em; }
+    .philo-item p{ margin:0; font-size: 13px; color: var(--muted); line-height:2; }
+
+    /* --- Contact --- */
+    .contact-box{
+      max-width: 720px;
+      margin: 0 auto;
+      text-align:center;
+    }
+    .contact-lead{
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0 0 38px;
+      line-height:2.1;
+    }
+    .wide-btn{ width:100%; }
+
+    /* --- Channels --- */
+    .channels { background: #eeebe7; padding: 110px 0; text-align: center; }
+    .channel-list { display: flex; justify-content: center; gap: 44px; margin-top: 34px; flex-wrap:wrap; }
+    .channel-item { font-family: 'Cormorant Garamond', serif; font-size: 20px; opacity: 0.75; font-style: italic; letter-spacing:.06em; }
+
+    /* --- Footer --- */
+    footer { padding: 64px 0; border-top: 1px solid var(--border); text-align: center; font-size: 11px; color: var(--muted); }
+    .footmark{ font-size: 16px; margin-bottom: 18px; letter-spacing:.08em; }
+
+    /* --- Mobile --- */
+    @media (max-width: 980px) {
+      .nav-d { display: none; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .products-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .philo-grid{ grid-template-columns:1fr; }
+      .hero-title { font-size: 42px; }
+      .sec { padding: 96px 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <div class="wrap header-in">
+      <a href="#" class="brand-logo">Lily.</a>
+
+      <nav class="nav-d">
+        <a href="#about">About</a>
+        <a href="#products">Collection</a>
+        <a href="#policy">Philosophy</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <!-- TODO: 公式LINE URLに差し替え -->
+      <a href="#contact" class="en mini-link">Line Chat</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1 class="hero-title">Brand Select shop Lily.</h1>
+        <p class="hero-sub en">Experience, Not Consumption. &nbsp; since 2020</p>
+
+        <!-- TODO: 自社ショップ（Shopify/BASE等）URLに差し替え -->
+        <a href="#products" class="btn">VIEW COLLECTION</a>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="sec">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2 class="sec-title">Lily. について</h2>
+          <p class="sec-sub">Our Perspective</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>自社で確認・整備</h3>
+            <p>ひとつひとつの個体と向き合い、その魅力が最も輝く状態まで整えてお届けします。</p>
+          </div>
+          <div class="card">
+            <h3>状態基準の透明性</h3>
+            <p>経年さえも愛せるように。傷や歴史も誠実に開示することが、私たちの信頼です。</p>
+          </div>
+          <div class="card">
+            <h3>手放すときまで</h3>
+            <p>ケアの相談から、手放す際の買取まで。ブランドとの時間に、静かに寄り添います。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="products" class="sec" style="background:#fff;">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2 class="sec-title">Collection</h2>
+          <p class="sec-sub">新着商品</p>
+        </div>
+
+        <div class="products-grid">
+          <a href="#" class="p-card">
+            <div class="p-img">
+              <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&q=80&w=800" alt="CHANEL">
+            </div>
+            <div class="p-info">
+              <div class="p-brand">CHANEL</div>
+              <div class="p-name">Vintage Chain Shoulder</div>
+              <div class="p-price">¥303,000</div>
+            </div>
+          </a>
+
+          <a href="#" class="p-card">
+            <div class="p-img">
+              <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&q=80&w=800" alt="LOUIS VUITTON">
+            </div>
+            <div class="p-info">
+              <div class="p-brand">LOUIS VUITTON</div>
+              <div class="p-name">Monogram Wallet</div>
+              <div class="p-price">¥49,800</div>
+            </div>
+          </a>
+
+          <a href="#" class="p-card">
+            <div class="p-img">
+              <img src="https://images.unsplash.com/photo-1598533093411-79283c7ce4f5?auto=format&fit=crop&q=80&w=800" alt="CELINE">
+            </div>
+            <div class="p-info">
+              <div class="p-brand">CELINE</div>
+              <div class="p-name">Macadam Hand Bag</div>
+              <div class="p-price">¥38,800</div>
+            </div>
+          </a>
+
+          <a href="#" class="p-card">
+            <div class="p-img">
+              <img src="https://images.unsplash.com/photo-1566150905458-1bf1fd111c36?auto=format&fit=crop&q=80&w=800" alt="GUCCI">
+            </div>
+            <div class="p-info">
+              <div class="p-brand">GUCCI</div>
+              <div class="p-name">Leather Shoulder Bag</div>
+              <div class="p-price">¥79,800</div>
+            </div>
+          </a>
+        </div>
+
+        <div style="text-align:center; margin-top:64px;">
+          <!-- TODO: 自社ショップの「一覧」URLへ -->
+          <a href="#" class="btn">ALL COLLECTION</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHILOSOPHY -->
+    <section id="policy" class="sec">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2 class="sec-title">Philosophy</h2>
+          <p class="sec-sub">安心の理由</p>
+        </div>
+
+        <div class="philo-grid">
+          <div class="philo-item">
+            <div class="philo-img">
+              <img src="https://images.unsplash.com/photo-1556905055-8f358a7a4bb4?auto=format&fit=crop&q=80&w=900" alt="policy 1">
+            </div>
+            <h3>真贋と状態基準</h3>
+            <p>私たちは「嘘のない販売」を掲げています。検品と状態開示を徹底し、納得して選べる情報を整えます。</p>
+          </div>
+
+          <div class="philo-item">
+            <div class="philo-img">
+              <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=900" alt="policy 2">
+            </div>
+            <h3>メンテナンスの思想</h3>
+            <p>過度な加飾ではなく、素材が持つ美しさを引き出すケアを。長く愛するための修復です。</p>
+          </div>
+
+          <div class="philo-item">
+            <div class="philo-img">
+              <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=900" alt="policy 3">
+            </div>
+            <h3>購入後の対話</h3>
+            <p>ケアの相談から、手放す際の買取まで。ブランドと暮らす時間を、最後までサポートします。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="sec" style="background:rgba(255,255,255,0.5);">
+      <div class="wrap contact-box">
+        <div class="sec-head">
+          <h2 class="sec-title">Contact</h2>
+          <p class="sec-sub">ご相談</p>
+        </div>
+
+        <p class="contact-lead">
+          商品のお問い合わせ、メンテナンス、買取のご依頼は<br>
+          公式LINEコンシェルジュにて承ります。
+        </p>
+
+        <!-- TODO: 公式LINE URLに差し替え -->
+        <a href="#" class="btn btn-solid wide-btn">LINE OFFICIAL CHAT</a>
+
+        <div style="margin-top:22px;">
+          <!-- TODO: お問い合わせフォームURLに差し替え -->
+          <a href="#" class="en mini-link" style="font-size:12px;">Mail Form Request</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHANNELS -->
+    <section id="channels" class="channels">
+      <div class="wrap">
+        <h2 class="sec-title">Our Channels</h2>
+        <div class="channel-list">
+          <span class="channel-item">Online Store</span>
+          <span class="channel-item">Mercari</span>
+          <span class="channel-item">Instagram</span>
+          <span class="channel-item">Future: TikTok Shop</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p class="en footmark">Lily.</p>
+      <p>&copy; Brand Select shop Lily.</p>
+    </div>
+  </footer>
+</body>
+</html>
